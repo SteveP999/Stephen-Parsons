@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stephen Parsons — Christian Singer-Songwriter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --black:    #07080a;
+  --ink:      #0e1013;
+  --deep:     #0b0d10;
+  --gold:     #C9A87A;
+  --gold-lt:  #E0C99A;
+  --gold-glow:#c9a87a55;
+  --cream:    #F2EAD8;
+  --mist:     #9E9A8E;
+  --white:    #F5F1E8;
+}
+html { scroll-behavior: smooth; }
+body {
+  background: var(--black);
+  color: var(--cream);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ── NAV ─────────────────────────────────────────────────────── */
+#topnav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2.5rem; height: 64px;
+  background: rgba(7,8,10,0); border-bottom: 1px solid transparent;
+  transition: background 0.4s, border-color 0.4s;
+}
+#topnav.scrolled {
+  background: rgba(7,8,10,0.95);
+  border-color: rgba(201,168,122,0.15);
+  backdrop-filter: blur(12px);
+}
+.nav-logo { height: 36px; width: auto; mix-blend-mode: screen; }
+.nav-links { display: flex; gap: 2.2rem; list-style: none; }
+.nav-links a {
+  color: var(--mist); text-decoration: none;
+  font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+  transition: color 0.25s;
+}
+.nav-links a:hover { color: var(--gold-lt); }
+
+/* ── HERO ─────────────────────────────────────────────────────── */
+.hero {
+  position: relative; height: 100vh; min-height: 620px;
+  display: flex; align-items: flex-end; overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background: url('https://raw.githubusercontent.com/SteveP999/stephen-parsons/main/stephen-parsons-gentleman-sunset-field.png') center center / cover no-repeat;
+}
+.hero-vignette {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(to bottom, rgba(7,8,10,0.35) 0%, rgba(7,8,10,0.0) 40%, rgba(7,8,10,0.0) 55%, rgba(7,8,10,0.94) 100%),
+    linear-gradient(to right,  rgba(7,8,10,0.55) 0%, transparent 55%);
+}
+.hero-content {
+  position: relative; z-index: 2;
+  padding: 0 3.5rem 4.5rem; max-width: 640px;
+}
+.hero-label {
+  font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1rem;
+}
+.hero-logo-wrap { margin-bottom: 1.5rem; }
+.hero-logo-wrap img { height: 70px; width: auto; }
+.hero-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.1rem, 2vw, 1.4rem); font-style: italic;
+  color: var(--cream); opacity: 0.88; margin-bottom: 2rem; line-height: 1.65;
+}
+.hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+.cta-primary {
+  background: var(--gold); color: var(--black); border: none;
+  padding: 0.75rem 1.8rem; font-family: 'Montserrat', sans-serif;
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em;
+  text-transform: uppercase; cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+.cta-primary:hover { background: var(--gold-lt); transform: translateY(-1px); }
+.cta-secondary {
+  background: transparent; color: var(--cream);
+  border: 1px solid rgba(201,168,122,0.5);
+  padding: 0.75rem 1.8rem; font-family: 'Montserrat', sans-serif;
+  font-size: 0.7rem; font-weight: 400; letter-spacing: 0.14em;
+  text-transform: uppercase; text-decoration: none; display: inline-block;
+  transition: border-color 0.2s, color 0.2s;
+}
+.cta-secondary:hover { border-color: var(--gold); color: var(--gold-lt); }
+
+/* ── SECTION CHROME ───────────────────────────────────────────── */
+.section-header { text-align: center; padding: 4.5rem 2rem 3rem; }
+.section-eyebrow {
+  font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 0.75rem;
+}
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 300;
+  color: var(--white); letter-spacing: 0.04em;
+}
+.gold-rule { width: 48px; height: 1px; background: var(--gold); margin: 1.2rem auto 0; opacity: 0.7; }
+
+/* ── BIO ──────────────────────────────────────────────────────── */
+#bio { background: var(--deep); padding-bottom: 5rem; }
+.bio-inner { max-width: 700px; margin: 0 auto; padding: 0 2rem; text-align: center; }
+.bio-inner p { color: var(--mist); line-height: 1.9; font-size: 0.95rem; margin-bottom: 1.2rem; }
+.bio-inner p:last-child { margin-bottom: 0; }
+
+/* ── LATEST SINGLE SECTION ────────────────────────────────────── */
+#latest-single-featured {
+  background: var(--ink); padding: 5rem 0;
+  border-top: 1px solid rgba(201,168,122,0.12); position: relative; z-index: 1;
+}
+.latest-inner {
+  max-width: 1040px; margin: 0 auto; padding: 0 2.5rem;
+  display: grid; grid-template-columns: 360px 1fr; gap: 4rem; align-items: center;
+}
+.latest-cover-img {
+  width: 100%; aspect-ratio: 1; object-fit: cover; display: block;
+  box-shadow: 0 0 60px rgba(201,168,122,0.22), 0 24px 64px rgba(0,0,0,0.8);
+}
+.latest-eyebrow {
+  font-family: 'Oswald', sans-serif; font-size: 0.6rem; letter-spacing: 0.25em;
+  text-transform: uppercase; color: var(--gold);
+  border: 1px solid rgba(201,168,122,0.4); padding: 0.25rem 0.85rem;
+  display: inline-block; margin-bottom: 1.2rem;
+}
+.latest-title {
+  font-family: 'Oswald', sans-serif; font-weight: 700;
+  font-size: clamp(2rem, 4vw, 3rem); text-transform: uppercase;
+  letter-spacing: 0.06em; line-height: 1.1; margin-bottom: 0.5rem; color: var(--white);
+}
+.latest-artist {
+  font-family: 'Oswald', sans-serif; font-size: 0.68rem; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--mist); margin-bottom: 2rem;
+}
+.play-single-btn {
+  display: inline-flex; align-items: center; gap: 0.75rem;
+  background: transparent; color: var(--gold);
+  border: 1px solid rgba(201,168,122,0.45); cursor: pointer;
+  padding: 0.85rem 2rem; font-family: 'Oswald', sans-serif;
+  font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+  transition: background 0.2s, border-color 0.2s;
+}
+.play-single-btn:hover { background: rgba(201,168,122,0.1); border-color: var(--gold); }
+
+/* ── ALBUM SECTION ────────────────────────────────────────────── */
+.album-section { padding: 5rem 0; border-top: 1px solid rgba(201,168,122,0.1); }
+.album-section:nth-child(odd)  { background: var(--ink); }
+.album-section:nth-child(even) { background: var(--deep); }
+.album-layout {
+  max-width: 1080px; margin: 0 auto; padding: 0 2.5rem;
+  display: grid; grid-template-columns: 340px 1fr; gap: 4rem; align-items: start;
+}
+.album-layout.reverse { direction: rtl; }
+.album-layout.reverse > * { direction: ltr; }
+.album-cover {
+  width: 100%; aspect-ratio: 1; object-fit: cover; display: block;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.7), 0 0 0 1px rgba(201,168,122,0.12);
+}
+.album-meta { padding-top: 0.5rem; }
+.album-badge {
+  display: inline-block; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold); border: 1px solid rgba(201,168,122,0.4);
+  padding: 0.25rem 0.75rem; margin-bottom: 1.2rem;
+}
+.album-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 300;
+  color: var(--white); line-height: 1.2; margin-bottom: 0.4rem;
+}
+.album-artist {
+  font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--mist); margin-bottom: 1.2rem;
+}
+.album-desc { color: var(--mist); font-size: 0.9rem; line-height: 1.8; margin-bottom: 2rem; max-width: 480px; }
+.tracklist { border-top: 1px solid rgba(201,168,122,0.12); }
+.track-row {
+  display: grid; grid-template-columns: 2rem 1fr auto auto;
+  align-items: center; gap: 0.75rem;
+  padding: 0.75rem 0; border-bottom: 1px solid rgba(201,168,122,0.08);
+  transition: background 0.2s;
+}
+.track-row:hover { background: rgba(201,168,122,0.04); }
+.track-num { font-size: 0.65rem; color: var(--mist); opacity: 0.5; text-align: right; font-family: 'Cormorant Garamond', serif; }
+.track-title { font-size: 0.88rem; color: var(--cream); letter-spacing: 0.02em; }
+.track-badge { font-size: 0.55rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.2rem 0.6rem; }
+.badge-new { color: #7DC4A8; border: 1px solid rgba(125,196,168,0.4); }
+.badge-hit { color: var(--gold); border: 1px solid rgba(201,168,122,0.45); }
+.track-play-btn {
+  background: transparent; border: 1px solid rgba(201,168,122,0.3); color: var(--gold);
+  width: 28px; height: 28px; display: flex; align-items: center; justify-content: center;
+  cursor: pointer; font-size: 0.65rem; transition: background 0.2s, border-color 0.2s; flex-shrink: 0;
+}
+.track-play-btn:hover { background: rgba(201,168,122,0.15); border-color: var(--gold); }
+.track-play-btn.playing { background: rgba(201,168,122,0.2); border-color: var(--gold-lt); }
+
+/* ── SINGLES GRID ─────────────────────────────────────────────── */
+#singles { background: #09090e; padding: 5rem 0; border-top: 1px solid rgba(201,168,122,0.1); }
+.singles-grid {
+  max-width: 1080px; margin: 0 auto; padding: 0 2.5rem;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.5rem;
+}
+.single-card { position: relative; cursor: pointer; }
+.single-img-wrap { position: relative; overflow: hidden; aspect-ratio: 1; }
+.single-img-wrap img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 0.4s, filter 0.4s; filter: brightness(0.82);
+}
+.single-card:hover .single-img-wrap img { transform: scale(1.04); filter: brightness(1); }
+.single-play-overlay {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  background: rgba(7,8,10,0); transition: background 0.3s;
+}
+.single-card:hover .single-play-overlay { background: rgba(7,8,10,0.35); }
+.single-play-btn {
+  width: 52px; height: 52px; border: 2px solid var(--gold);
+  background: rgba(7,8,10,0.6); color: var(--gold); font-size: 1rem;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; opacity: 0; transform: scale(0.85);
+  transition: opacity 0.25s, transform 0.25s;
+}
+.single-card:hover .single-play-btn { opacity: 1; transform: scale(1); }
+.single-play-btn.playing { opacity: 1; transform: scale(1); }
+.single-info { padding: 0.85rem 0 0; }
+.single-title { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--white); margin-bottom: 0.2rem; }
+.single-sub { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--mist); opacity: 0.7; }
+
+/* ── PHOTO GALLERY ────────────────────────────────────────────── */
+#gallery { background: var(--deep); padding: 5rem 0; border-top: 1px solid rgba(201,168,122,0.1); }
+.gallery-grid {
+  max-width: 1080px; margin: 0 auto; padding: 0 2.5rem;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 6px;
+}
+.gallery-img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; filter: brightness(0.88); transition: filter 0.3s, transform 0.3s; }
+.gallery-img:hover { filter: brightness(1); transform: scale(1.01); }
+.gallery-img.wide { grid-column: span 2; aspect-ratio: 2/1; }
+
+/* ── FIXED PLAYER ─────────────────────────────────────────────── */
+#player {
+  display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
+  background: rgba(9,8,11,0.97); border-top: 1px solid rgba(201,168,122,0.25);
+  backdrop-filter: blur(16px); grid-template-columns: auto 1fr auto;
+  align-items: center; gap: 1.5rem; padding: 0.8rem 2rem;
+  transform: translateY(100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+}
+#player.visible { transform: translateY(0); }
+.p-track-info { display: flex; align-items: center; gap: 1rem; min-width: 0; }
+.p-thumb { width: 42px; height: 42px; object-fit: cover; flex-shrink: 0; border: 1px solid rgba(201,168,122,0.2); }
+.p-title { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--white); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.p-album { font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--mist); opacity: 0.6; }
+.p-controls { display: flex; align-items: center; gap: 0.8rem; flex-direction: column; flex: 1; min-width: 0; }
+.p-btn-row { display: flex; align-items: center; gap: 1.2rem; }
+.p-btn { background: transparent; border: none; color: var(--mist); cursor: pointer; font-size: 0.9rem; padding: 0.25rem; transition: color 0.2s; }
+.p-btn:hover { color: var(--gold-lt); }
+#p-playbtn {
+  width: 38px; height: 38px; border: 1px solid rgba(201,168,122,0.5);
+  background: transparent; color: var(--gold); cursor: pointer; font-size: 0.85rem;
+  display: flex; align-items: center; justify-content: center; transition: background 0.2s;
+}
+#p-playbtn:hover { background: rgba(201,168,122,0.15); }
+.p-progress { display: flex; align-items: center; gap: 0.75rem; width: 100%; }
+.p-time { font-size: 0.62rem; color: var(--mist); opacity: 0.6; white-space: nowrap; }
+#p-bar { flex: 1; height: 3px; background: rgba(201,168,122,0.18); cursor: pointer; position: relative; }
+#p-fill { height: 100%; width: 0%; background: linear-gradient(to right, var(--gold), var(--gold-lt)); pointer-events: none; }
+.p-right { display: flex; align-items: center; gap: 1rem; }
+#p-vol { width: 72px; accent-color: var(--gold); }
+#p-close { background: transparent; border: none; color: var(--mist); cursor: pointer; font-size: 1rem; opacity: 0.5; transition: opacity 0.2s; }
+#p-close:hover { opacity: 1; }
+
+/* ── FOOTER ───────────────────────────────────────────────────── */
+footer { background: var(--black); border-top: 1px solid rgba(201,168,122,0.12); padding: 4rem 2rem 3rem; text-align: center; }
+.foot-logo { height: 52px; width: auto; margin-bottom: 1.2rem; display: block; margin-left: auto; margin-right: auto; }
+.foot-label { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--mist); opacity: 0.5; margin-bottom: 1.5rem; }
+.foot-links { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; }
+.foot-links a { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--mist); text-decoration: none; opacity: 0.5; transition: opacity 0.2s, color 0.2s; }
+.foot-links a:hover { opacity: 1; color: var(--gold-lt); }
+
+/* ── RESPONSIVE ───────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .album-layout, .album-layout.reverse { grid-template-columns: 1fr; direction: ltr; gap: 2rem; }
+  .album-cover { max-width: 320px; margin: 0 auto; }
+  .hero-content { padding: 0 1.8rem 3.5rem; }
+  .singles-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  #player { grid-template-columns: 1fr; gap: 0.5rem; }
+  .p-track-info { display: none; }
+  .latest-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .gallery-img.wide { grid-column: span 1; aspect-ratio: 1; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="topnav">
+  <a href="#"><img src="https://raw.githubusercontent.com/SteveP999/stephen-parsons/main/stephen-parsons-logo-transparent-oval.png" alt="Stephen Parsons" class="nav-logo"></a>
+  <ul class="nav-links">
+    <li><a href="#bio">About</a></li>
+    <li><a href="#album">Album</a></li>
+    <li><a href="#singles">Songs</a></li>
+    <li><a href="#gallery">Photos</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-vignette"></div>
+  <div class="hero-content">
+    <div class="hero-label">Hello Texas Records</div>
+    <div class="hero-logo-wrap">
+      <img src="https://raw.githubusercontent.com/SteveP999/stephen-parsons/main/stephen-parsons-logo-transparent-oval.png" alt="Stephen Parsons">
+    </div>
+    <p class="hero-tagline">Songs from the heart.<br>Written for the people who matter most.</p>
+    <div class="hero-ctas">
+      <button class="cta-primary" onclick="playTrack('riseup')">&#9654;&nbsp; Play Rise Up</button>
+      <a href="#album" class="cta-secondary">Touches from the Heart</a>
+    </div>
+  </div>
+</section>
+
+<!-- BIO -->
+<section id="bio">
+  <div class="section-header">
+    <div class="section-eyebrow">About</div>
+    <h2 class="section-title">Stephen Parsons</h2>
+    <div class="gold-rule"></div>
+  </div>
+  <div class="bio-inner">
+    <p>Stephen Parsons is a Christian singer-songwriter whose music is rooted in the honest moments — the ones you only share with the people you love most. Songs about daughters and mothers, grief and gratitude, coming home and staying close.</p>
+    <p>His debut album <em>Touches from the Heart</em> is a collection of deeply personal songs written from lived experience. No performance, no pretense — just faith, family, and the kind of truth that doesn't need to be dressed up.</p>
+    <p>Released through Hello Texas Records, Stephen Parsons brings a solo voice to stories that connect where they were always meant to: in the quiet places, at the kitchen table, and in the moments that stay with you forever.</p>
+  </div>
+</section>
+
+<!-- LATEST SINGLE -->
+<section id="latest-single-featured">
+  <div style="text-align:center;padding:0 2rem 3.5rem;">
+    <div class="section-eyebrow">Latest Single</div>
+    <h2 style="font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(2rem,5vw,3.5rem);letter-spacing:0.06em;text-transform:uppercase;color:var(--white);">Rise Up</h2>
+    <div style="width:60px;height:2px;margin:1.2rem auto 0;background:var(--gold);"></div>
+  </div>
+  <div class="latest-inner">
+    <div><img src="https://raw.githubusercontent.com/SteveP999/stephen-parsons/main/stephen-parsons-rise-up-cover.png" alt="Rise Up" class="latest-cover-img"></div>
+    <div style="padding-top:0.5rem;">
+      <div class="latest-eyebrow">Latest Single</div>
+      <div class="latest-title">Rise Up</div>
+      <div class="latest-artist">Stephen Parsons</div>
+      <button class="play-single-btn" onclick="playTrack('riseup')">&#9654;&nbsp; Play Now</button>
+    </div>
+  </div>
+</section>
+
+<!-- ALBUM: TOUCHED FROM THE HEART -->
+<section id="album" class="album-section">
+  <div class="album-layout">
+    <div>
+      <img src="https://raw.githubusercontent.com/SteveP999/stephen-parsons/main/stephen-parsons-touches-of-the-heart-cover.png" alt="Touches from the Heart" class="album-cover">
+    </div>
+    <div class="album-meta">
+      <div class="album-badge">Debut Album</div>
+      <h2 class="album-title">Touches from the Heart</h2>
+      <div class="album-artist">Stephen Parsons</div>
+      <p class="album-desc">Seven songs written in the honest places — for daughters, mothers, the ones we've lost, and the ones we can't wait to come home to. Personal faith. Real love. No filters.</p>
+      <div class="tracklist">
+        <div class="track-row">
+          <span class="track-num">01</span>
+          <span class="track-title">Rise Up</span>
+          <span class="track-badge badge-new">New Single</span>
+          <button class="track-play-btn" onclick="playTrack('riseup')" id="btn_riseup">&#9654;</button>
+        </div>
+        <div class="track-row">
+          <span class="track-num">02</span>
+          <span class="track-title">My Daughter's Heart</span>
+          <span></span>
+          <button class="track-play-btn" onclick="playTrack('mydaughter')" id="btn_mydaughter">&#9654;</button>
+        </div>
+        <div class="track-row">
+          <span class="track-num">03</span>
+          <span class="track-title">Wide Open Silence</span>
+          <span></span>
+          <button class="track-play-btn" onclick="playTrack('wos')" id="btn_wos">&#9654;</button>
+        </div>
+        <div class="track-row">
+          <span class="track-num">04</span>
+          <span class="track-title">Thank You Mom and Dad</span>
+          <span></span>
+          <button class="track-play-btn" onclick="playTrack('thankyou')" id="btn_thankyou">&#9654;</button>
+        </div>
+        <div class="track-row">
+          <span class="track-num">05</span>
+          <span class="track-title">Mom's Love</span>
+          <span></span>
+          <button class="track-play-btn" onclick="playTrack('momslove')" id="btn_momslove">&#9654;</button>
+        </div>
+        <div class="track-row">
+          <span class="track-num">06</span>
+          <span class="track-title">Debbie's Love Goes On</span>
+          <span></span>
+          <button class="track-play-btn" onclick="playTrack('debbies')" id="btn_debbies">&#9654;</button>
+        </div>
+        <div class="track-row">
+          <span class="track-num">07</span>
+          <span class="track-title">I Come Back Home</span>
+          <span></span>
+          <button class="track-play-btn" onclick="playTrack('icomeback')" id="btn_icomeback">&#9654;</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SINGLES GRID -->
+<section id="singles">
+  <div class="section-header">
+    <div class="section-eyebrow">Songs</div>
+    <h2 class="section-title">Featured Tracks</h2>
+    <div class="gold-rule"></div>
+  </div>
+  <div class="singles-grid">
+    <div class="single-card" onclick="playTrack('riseup')">
+      <div class="single-img-wrap">
+        <img src="https://raw.githubusercontent.com/SteveP999/stephen-parsons/main/stephen-parsons-rise-up-cover.png" alt="Rise Up">
+        <div class="single-play-overlay"><button class="single-play-btn" id="splay_riseup">&#9654;</button></div>
+      </div>
+      <div class="single-info"><div class="single-title">Rise Up</div><div class="single-sub">Latest Single</div></div>
+    </div>
+    <div class="single-card" onclick="playTrack('mydaughter')">
+      <div class="single-img-wrap">
+        <img src="https://raw.githubusercontent.com/SteveP999/stephen-parsons/main/stephen-parsons-touches-of-the-heart-cover.png" alt="My Daughter's Heart">
+        <div class="single-play-overlay"><button class="single-play-btn" id="splay_mydaughter">&#9654;</button></div>
+      </div>
+      <div class="single-info"><div class="single-title">My Daughter's Heart</div><div class="single-sub">Touches from the Heart</div></div>
+    </div>
+    <div class="single-card" onclick="playTrack('wos')">
+      <div class="single-img-wrap">
+        <img src="https://raw.githubusercontent.com/SteveP999/stephen-parsons/main/stephen-parsons-touches-of-the-heart-cover.png" alt="Wide Open Silence">
+        <div class="single-play-overlay"><button class="single-play-btn" id="splay_wos">&#9654;</button></div>
+      </div>
+      <div class="single-info"><div class="single-title">Wide Open Silence</div><div class="single-sub">Touches from the Heart</div></div>
+    </div>
+    <div class="single-card" onclick="playTrack('thankyou')">
+      <div class="single-img-wrap">
+        <img src="https://raw.githubusercontent.com/SteveP999/stephen-parsons/main/stephen-parsons-touches-of-the-heart-cover.png" alt="Thank You Mom and Dad">
+        <div class="single-play-overlay"><button class="single-play-btn" id="splay_thankyou">&#9654;</button></div>
+      </div>
+      <div class="single-info"><div class="single-title">Thank You Mom and Dad</div><div class="single-sub">Touches from the Heart</div></div>
+    </div>
+    <div class="single-card" onclick="playTrack('momslove')">
+      <div class="single-img-wrap">
+        <img src="https://raw.githubusercontent.com/SteveP999/stephen-parsons/main/stephen-parsons-touches-of-the-heart-cover.png" alt="Mom's Love">
+        <div class="single-play-overlay"><button class="single-play-btn" id="splay_momslove">&#9654;</button></div>
+      </div>
+      <div class="single-info"><div class="single-title">Mom's Love</div><div class="single-sub">Touches from the Heart</div></div>
+    </div>
+    <div class="single-card" onclick="playTrack('debbies')">
+      <div class="single-img-wrap">
+        <img src="https://raw.githubusercontent.com/SteveP999/stephen-parsons/main/stephen-parsons-touches-of-the-heart-cover.png" alt="Debbie's Love Goes On">
+        <div class="single-play-overlay"><button class="single-play-btn" id="splay_debbies">&#9654;</button></div>
+      </div>
+      <div class="single-info"><div class="single-title">Debbie's Love Goes On</div><div class="single-sub">Touches from the Heart</div></div>
+    </div>
+    <div class="single-card" onclick="playTrack('icomeback')">
+      <div class="single-img-wrap">
+        <img src="https://raw.githubusercontent.com/SteveP999/stephen-parsons/main/stephen-parsons-touches-of-the-heart-cover.png" alt="I Come Back Home">
+        <div class="single-play-overlay"><button class="single-play-btn" id="splay_icomeback">&#9654;</button></div>
+      </div>
+      <div class="single-info"><div class="single-title">I Come Back Home</div><div class="single-sub">Touches from the Heart</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO GALLERY -->
+<section id="gallery">
+  <div class="section-header">
+    <div class="section-eyebrow">Photos</div>
+    <h2 class="section-title">Stephen Parsons</h2>
+    <div class="gold-rule"></div>
+  </div>
+  <div class="gallery-grid">
+    <img src="https://raw.githubusercontent.com/SteveP999/stephen-parsons/main/stephen-parsons-gentleman-sunset-field.png" alt="Stephen Parsons" class="gallery-img wide">
+    <img src="https://raw.githubusercontent.com/SteveP999/stephen-parsons/main/stephen-parsons-cowboy-fence-lean.png" alt="Stephen Parsons" class="gallery-img">
+    <img src="https://raw.githubusercontent.com/SteveP999/stephen-parsons/main/stephen-parsons-gentleman-black-and-white.png" alt="Stephen Parsons" class="gallery-img">
+    <img src="https://raw.githubusercontent.com/SteveP999/stephen-parsons/main/stephen-parsons-cowboy-closeup.png" alt="Stephen Parsons" class="gallery-img">
+    <img src="https://raw.githubusercontent.com/SteveP999/stephen-parsons/main/stephen-parsons-gentleman-outside-of-church.png" alt="Stephen Parsons" class="gallery-img">
+    <img src="https://raw.githubusercontent.com/SteveP999/stephen-parsons/main/stephen-parsons-cowboy-reflective.png" alt="Stephen Parsons" class="gallery-img">
+    <img src="https://raw.githubusercontent.com/SteveP999/stephen-parsons/main/stephen-parsons-gentleman-walking-out-of-church.png" alt="Stephen Parsons" class="gallery-img">
+    <img src="https://raw.githubusercontent.com/SteveP999/stephen-parsons/main/stephen-parsons-cowboy-serious-black-background.png" alt="Stephen Parsons" class="gallery-img">
+    <img src="https://raw.githubusercontent.com/SteveP999/stephen-parsons/main/alternate-stephen-parsons-cowboy-stage-performance-wedding-ring.png" alt="Stephen Parsons" class="gallery-img">
+    <img src="https://raw.githubusercontent.com/SteveP999/stephen-parsons/main/stephen-parsons-gentleman-backstage-black-and-white.png" alt="Stephen Parsons" class="gallery-img">
+    <img src="https://raw.githubusercontent.com/SteveP999/stephen-parsons/main/alternate-stephen-parsons-gentleman-black-and-white-no-smile.png" alt="Stephen Parsons" class="gallery-img">
+    <img src="https://raw.githubusercontent.com/SteveP999/stephen-parsons/main/alternate-stephen-parsons-gentleman-leather-chair.png" alt="Stephen Parsons" class="gallery-img">
+    <img src="https://raw.githubusercontent.com/SteveP999/stephen-parsons/main/stephen-parsons-cowboy-barstool.png" alt="Stephen Parsons" class="gallery-img">
+  </div>
+</section>
+
+<!-- FIXED PLAYER -->
+<audio id="audio" playsinline preload="none"></audio>
+<div id="player">
+  <div class="p-track-info">
+    <img id="p-thumb" src="https://raw.githubusercontent.com/SteveP999/stephen-parsons/main/stephen-parsons-rise-up-cover.png" alt="" class="p-thumb">
+    <div>
+      <div id="p-title" class="p-title">—</div>
+      <div id="p-album" class="p-album">Stephen Parsons</div>
+    </div>
+  </div>
+  <div class="p-controls">
+    <div class="p-btn-row">
+      <button class="p-btn" id="p-prev">&#9664;&#9664;</button>
+      <button id="p-playbtn">&#9654;</button>
+      <button class="p-btn" id="p-next">&#9654;&#9654;</button>
+    </div>
+    <div class="p-progress">
+      <span class="p-time" id="p-cur">0:00</span>
+      <div id="p-bar"><div id="p-fill"></div></div>
+      <span class="p-time" id="p-dur">0:00</span>
+    </div>
+  </div>
+  <div class="p-right">
+    <input type="range" id="p-vol" min="0" max="1" step="0.02" value="0.85">
+    <button id="p-close">&#x2715;</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <img src="https://raw.githubusercontent.com/SteveP999/stephen-parsons/main/stephen-parsons-logo-white-background.png" alt="Stephen Parsons" class="foot-logo">
+  <div class="foot-label">Hello Texas Records</div>
+  <div class="foot-links">
+    <a href="https://hellotexasrecords.com" target="_blank">Hello Texas Records</a>
+    <a href="https://hellotexasradio.hellotexasrecords.com" target="_blank">HTR Radio</a>
+  </div>
+</footer>
+
+<script>
+const BASE = 'https://raw.githubusercontent.com/SteveP999/stephen-parsons/main/';
+const ALBUM_COVER = BASE + 'stephen-parsons-touches-of-the-heart-cover.png';
+const RISEUP_COVER = BASE + 'stephen-parsons-rise-up-cover.png';
+
+const TRACKS = {
+  riseup:     { title: 'Rise Up',               album: 'Touches from the Heart', cover: RISEUP_COVER,  src: 'https://www.dropbox.com/scl/fi/fgz0bbtwwf0e9wlkm8org/stephen-bender-rise-up.mp3?rlkey=6yh8ebyatwtvovct94a9nj4xn&raw=1' },
+  mydaughter: { title: "My Daughter's Heart",   album: 'Touches from the Heart', cover: ALBUM_COVER,   src: 'https://www.dropbox.com/scl/fi/czv2skkkp8c3nggo8ngml/my-daughter-s-heart.mp3?rlkey=keaw0zy3n5zk60igwk8mchqc5&raw=1' },
+  wos:        { title: 'Wide Open Silence',      album: 'Touches from the Heart', cover: ALBUM_COVER,   src: 'https://www.dropbox.com/scl/fi/4wt3mx9s3woo05d7ff5ei/parsons-cross-wide-open-silence-mp3.mp3?rlkey=xak7nxx0xb0s9ivrn6azgpbt8&raw=1' },
+  thankyou:   { title: 'Thank You Mom and Dad', album: 'Touches from the Heart', cover: ALBUM_COVER,   src: 'https://www.dropbox.com/scl/fi/09pimczovbjl5bbjqoxjf/parsons-cross-thank-you-mom-and-dad-mastered-MP3.mp3?rlkey=v5qac8t8s945oe016y1p2lnej&raw=1' },
+  momslove:   { title: "Mom's Love",             album: 'Touches from the Heart', cover: ALBUM_COVER,   src: 'https://www.dropbox.com/scl/fi/wq193142bjg3hmsamouke/mom-s-love.mp3?rlkey=rmj7vntmwxkodhicmi8bzxpuu&raw=1' },
+  debbies:    { title: "Debbie's Love Goes On",  album: 'Touches from the Heart', cover: ALBUM_COVER,   src: 'https://www.dropbox.com/scl/fi/6m8q9cm1ejsjr1afpco2g/debbie-s-love-goes-on.mp3?rlkey=93fz1f438mxkerbfcwnekq2ud&raw=1' },
+  icomeback:  { title: 'I Come Back Home',       album: 'Touches from the Heart', cover: ALBUM_COVER,   src: 'https://www.dropbox.com/scl/fo/midxhc415t2o8e21m1hmu/APdUvbj3PthtYx8TpJLb61o?rlkey=bga6bnp38jeae7hfilnl5fbg2&raw=1' }
+};
+
+const ALBUM_ORDER = ['riseup','mydaughter','wos','thankyou','momslove','debbies','icomeback'];
+
+let cur = null;
+const audio  = document.getElementById('audio');
+const player = document.getElementById('player');
+const pThumb = document.getElementById('p-thumb');
+
+function fmt(s) {
+  if (isNaN(s) || s === Infinity) return '0:00';
+  const m = Math.floor(s / 60), sec = Math.floor(s % 60);
+  return m + ':' + (sec < 10 ? '0' : '') + sec;
+}
+
+function setAllBtns(id, playing) {
+  document.querySelectorAll('.track-play-btn').forEach(b => {
+    const tid = b.getAttribute('onclick')?.match(/'([^']+)'/)?.[1];
+    if (!tid) return;
+    b.innerHTML = (tid === id && playing) ? '&#9646;&#9646;' : '&#9654;';
+    b.classList.toggle('playing', tid === id && playing);
+  });
+  document.querySelectorAll('.single-play-btn').forEach(b => {
+    const card = b.closest('.single-card');
+    const tid  = card?.getAttribute('onclick')?.match(/'([^']+)'/)?.[1];
+    b.innerHTML = (tid === id && playing) ? '&#9646;&#9646;' : '&#9654;';
+    b.classList.toggle('playing', tid === id && playing);
+  });
+  document.getElementById('p-playbtn').innerHTML = playing ? '&#9646;&#9646;' : '&#9654;';
+}
+
+function playTrack(id) {
+  const t = TRACKS[id];
+  if (!t) return;
+  if (cur === id) {
+    if (audio.paused) { audio.play().catch(() => {}); setAllBtns(id, true); }
+    else              { audio.pause(); setAllBtns(id, false); }
+    return;
+  }
+  cur = id;
+  audio.removeAttribute('crossorigin');
+  audio.src = t.src;
+  document.getElementById('p-title').textContent = t.title;
+  document.getElementById('p-album').textContent = t.album;
+  pThumb.src = t.cover;
+  player.style.display = 'grid';
+  setTimeout(() => player.classList.add('visible'), 10);
+  setAllBtns(id, true);
+  audio.load();
+  const pp = audio.play();
+  if (pp !== undefined) pp.catch(() => {
+    audio.addEventListener('canplaythrough', function onCPT() {
+      audio.removeEventListener('canplaythrough', onCPT);
+      audio.play().catch(() => {});
+    });
+  });
+}
+
+audio.addEventListener('timeupdate', () => {
+  const pct = audio.duration ? (audio.currentTime / audio.duration) * 100 : 0;
+  document.getElementById('p-fill').style.width = pct + '%';
+  document.getElementById('p-cur').textContent  = fmt(audio.currentTime);
+  document.getElementById('p-dur').textContent  = fmt(audio.duration);
+});
+
+audio.addEventListener('ended', () => {
+  const idx = ALBUM_ORDER.indexOf(cur);
+  if (idx > -1 && idx < ALBUM_ORDER.length - 1) playTrack(ALBUM_ORDER[idx + 1]);
+  else setAllBtns(cur, false);
+});
+
+document.getElementById('p-playbtn').addEventListener('click', () => {
+  if (!cur) return;
+  if (audio.paused) { audio.play().catch(() => {}); setAllBtns(cur, true); }
+  else              { audio.pause(); setAllBtns(cur, false); }
+});
+document.getElementById('p-prev').addEventListener('click', () => {
+  if (!cur) return;
+  const idx = ALBUM_ORDER.indexOf(cur);
+  if (audio.currentTime > 3) { audio.currentTime = 0; return; }
+  if (idx > 0) playTrack(ALBUM_ORDER[idx - 1]);
+});
+document.getElementById('p-next').addEventListener('click', () => {
+  if (!cur) return;
+  const idx = ALBUM_ORDER.indexOf(cur);
+  if (idx > -1 && idx < ALBUM_ORDER.length - 1) playTrack(ALBUM_ORDER[idx + 1]);
+});
+document.getElementById('p-bar').addEventListener('click', e => {
+  if (!audio.duration) return;
+  const r = e.currentTarget.getBoundingClientRect();
+  audio.currentTime = ((e.clientX - r.left) / r.width) * audio.duration;
+});
+document.getElementById('p-vol').addEventListener('input', e => { audio.volume = e.target.value; });
+document.getElementById('p-close').addEventListener('click', () => {
+  audio.pause();
+  player.classList.remove('visible');
+  setTimeout(() => player.style.display = 'none', 350);
+  setAllBtns(cur, false);
+  cur = null;
+});
+
+// Nav scroll effect
+window.addEventListener('scroll', () => {
+  document.getElementById('topnav').classList.toggle('scrolled', window.scrollY > 40);
+});
+</script>
+</body>
+</html>
