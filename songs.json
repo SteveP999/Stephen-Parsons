@@ -82,9 +82,20 @@
     "title": "Rise Up",
     "artist": "Stephen Parsons",
     "album": "Touches of the Heart",
-    "type": "Latest Single",
-    "isLatest": true,
+    "type": "Single",
+    "isLatest": false,
     "cover": "https://raw.githubusercontent.com/SteveP999/stephen-parsons/main/covers/stephen-parsons-rise-up-cover.png",
     "audio": "https://www.dropbox.com/scl/fi/fgz0bbtwwf0e9wlkm8org/stephen-parsons-rise-up-mp3.mp3?rlkey=6yh8ebyatwtvovct94a9nj4xn&raw=1"
+  },
+  {
+    "id": "calling_in_the_silence",
+    "num": "09",
+    "title": "Calling in the Silence",
+    "artist": "Stephen Parsons",
+    "album": "Touches of the Heart",
+    "type": "Latest Single",
+    "isLatest": true,
+    "cover": "https://raw.githubusercontent.com/SteveP999/stephen-parsons/main/covers/stephen-parsons-calling-in-the-silence.png",
+    "audio": "https://www.dropbox.com/scl/fi/qifps9vrox4dbkrsf4k5u/stephen-parsons-calling-in-the-silence-mp3.mp3?rlkey=7zz2iut6s3n23sbf8q23rot2s&raw=1"
   }
 ]
