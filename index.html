@@ -327,7 +327,7 @@ footer { background: var(--black); border-top: 1px solid rgba(201,168,122,0.12);
     </div>
     <p class="hero-tagline">Songs from the heart.<br>Written for the people who matter most.</p>
     <div class="hero-ctas">
-      <button class="cta-primary" onclick="playTrack('rise_up')">&#9654;&nbsp; Play Rise Up</button>
+      <button class="cta-primary" onclick="playTrack('calling_in_the_silence')">&#9654;&nbsp; Play Calling in the Silence</button>
       <a href="#album" class="cta-secondary">Touches of the Heart</a>
     </div>
   </div>
@@ -351,16 +351,16 @@ footer { background: var(--black); border-top: 1px solid rgba(201,168,122,0.12);
 <section id="latest-single-featured">
   <div style="text-align:center;padding:0 2rem 3.5rem;">
     <div class="section-eyebrow">Latest Single</div>
-    <h2 style="font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(2rem,5vw,3.5rem);letter-spacing:0.06em;text-transform:uppercase;color:var(--white);">Rise Up</h2>
+    <h2 style="font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(2rem,5vw,3.5rem);letter-spacing:0.06em;text-transform:uppercase;color:var(--white);">Calling in the Silence</h2>
     <div style="width:60px;height:2px;margin:1.2rem auto 0;background:var(--gold);"></div>
   </div>
   <div class="latest-inner">
-    <div><img src="https://raw.githubusercontent.com/SteveP999/stephen-parsons/main/covers/stephen-parsons-rise-up-cover.png" alt="Rise Up" class="latest-cover-img"></div>
+    <div><img src="https://raw.githubusercontent.com/SteveP999/stephen-parsons/main/covers/stephen-parsons-calling-in-the-silence.png" alt="Calling in the Silence" class="latest-cover-img"></div>
     <div style="padding-top:0.5rem;">
       <div class="latest-eyebrow">Latest Single</div>
-      <div class="latest-title">Rise Up</div>
+      <div class="latest-title">Calling in the Silence</div>
       <div class="latest-artist">Stephen Parsons</div>
-      <button class="play-single-btn" onclick="playTrack('rise_up')">&#9654;&nbsp; Play Now</button>
+      <button class="play-single-btn" onclick="playTrack('calling_in_the_silence')">&#9654;&nbsp; Play Now</button>
     </div>
   </div>
 </section>
@@ -422,8 +422,14 @@ footer { background: var(--black); border-top: 1px solid rgba(201,168,122,0.12);
         <div class="track-row">
           <span class="track-num">08</span>
           <span class="track-title">Rise Up</span>
-          <span class="track-badge badge-new">New Single</span>
+          <span></span>
           <button class="track-play-btn" onclick="playTrack('rise_up')" id="btn_rise_up">&#9654;</button>
+        </div>
+        <div class="track-row">
+          <span class="track-num">09</span>
+          <span class="track-title">Calling in the Silence</span>
+          <span class="track-badge badge-new">New Single</span>
+          <button class="track-play-btn" onclick="playTrack('calling_in_the_silence')" id="btn_calling_in_the_silence">&#9654;</button>
         </div>
       </div>
     </div>
@@ -492,7 +498,14 @@ footer { background: var(--black); border-top: 1px solid rgba(201,168,122,0.12);
         <img src="https://raw.githubusercontent.com/SteveP999/stephen-parsons/main/covers/stephen-parsons-rise-up-cover.png" alt="Rise Up">
         <div class="single-play-overlay"><button class="single-play-btn" id="splay_rise_up">&#9654;</button></div>
       </div>
-      <div class="single-info"><div class="single-title">Rise Up</div><div class="single-sub">Latest Single</div></div>
+      <div class="single-info"><div class="single-title">Rise Up</div><div class="single-sub">Touches of the Heart</div></div>
+    </div>
+    <div class="single-card" onclick="playTrack('calling_in_the_silence')">
+      <div class="single-img-wrap">
+        <img src="https://raw.githubusercontent.com/SteveP999/stephen-parsons/main/covers/stephen-parsons-calling-in-the-silence.png" alt="Calling in the Silence">
+        <div class="single-play-overlay"><button class="single-play-btn" id="splay_calling_in_the_silence">&#9654;</button></div>
+      </div>
+      <div class="single-info"><div class="single-title">Calling in the Silence</div><div class="single-sub">Latest Single</div></div>
     </div>
   </div>
 </section>
@@ -568,10 +581,11 @@ const TRACKS = {
   moms_love: { title: 'Mom\'s Love', album: 'Touches of the Heart', cover: 'https://raw.githubusercontent.com/SteveP999/stephen-parsons/main/covers/stephen-parsons-moms-love-cover.png', src: 'https://www.dropbox.com/scl/fi/hz1ptkb0eyj06hxe34jvi/stephen-parsons-moms-love-mp3.mp3?rlkey=n4h4u0b64mikukb5inkomx6am&raw=1' },
   done_with_the_damage: { title: 'Done With The Damage', album: 'Touches of the Heart', cover: 'https://raw.githubusercontent.com/SteveP999/stephen-parsons/main/covers/stephen-parsons-done-with-the-damage-cover.png', src: 'https://www.dropbox.com/scl/fi/oww767j5mv9zhebw4qnqh/stephen-parsons-done-with-the-damage.mp3.mp3?rlkey=m50njubs1y0k40ijrttlkw1ts&raw=1' },
   my_daughters_heart: { title: 'My Daughter\'s Heart', album: 'Touches of the Heart', cover: 'https://raw.githubusercontent.com/SteveP999/stephen-parsons/main/covers/stephen-parsons-my-daughters-heart-cover.png', src: 'https://www.dropbox.com/scl/fi/czv2skkkp8c3nggo8ngml/stephen-parsons-my-daughters-heart-mp3.mp3?rlkey=keaw0zy3n5zk60igwk8mchqc5&raw=1' },
-  rise_up: { title: 'Rise Up', album: 'Touches of the Heart', cover: 'https://raw.githubusercontent.com/SteveP999/stephen-parsons/main/covers/stephen-parsons-rise-up-cover.png', src: 'https://www.dropbox.com/scl/fi/fgz0bbtwwf0e9wlkm8org/stephen-parsons-rise-up-mp3.mp3?rlkey=6yh8ebyatwtvovct94a9nj4xn&raw=1' }
+  rise_up: { title: 'Rise Up', album: 'Touches of the Heart', cover: 'https://raw.githubusercontent.com/SteveP999/stephen-parsons/main/covers/stephen-parsons-rise-up-cover.png', src: 'https://www.dropbox.com/scl/fi/fgz0bbtwwf0e9wlkm8org/stephen-parsons-rise-up-mp3.mp3?rlkey=6yh8ebyatwtvovct94a9nj4xn&raw=1' },
+  calling_in_the_silence: { title: 'Calling in the Silence', album: 'Touches of the Heart', cover: 'https://raw.githubusercontent.com/SteveP999/stephen-parsons/main/covers/stephen-parsons-calling-in-the-silence.png', src: 'https://www.dropbox.com/scl/fi/qifps9vrox4dbkrsf4k5u/stephen-parsons-calling-in-the-silence-mp3.mp3?rlkey=7zz2iut6s3n23sbf8q23rot2s&raw=1' }
 };
 
-const ALBUM_ORDER = ['thank_you_mom_and_dad', 'run_to_his_heart', 'wide_open_silence', 'love_for_eternity', 'moms_love', 'done_with_the_damage', 'my_daughters_heart', 'rise_up'];
+const ALBUM_ORDER = ['thank_you_mom_and_dad', 'run_to_his_heart', 'wide_open_silence', 'love_for_eternity', 'moms_love', 'done_with_the_damage', 'my_daughters_heart', 'rise_up', 'calling_in_the_silence'];
 
 let cur = null;
 const audio  = document.getElementById('audio');
